@@ -168,6 +168,7 @@ void merge(){
     node *sort = sorted_list.head;
 
     // Set head of output
+/*
     if (a_iter->data <= e_iter->data){
         sorted_list.head = a_iter;
 
@@ -179,10 +180,13 @@ void merge(){
     // Loop through to both to sort
     while ((a_iter != NULL) && (e_iter != NULL)){
         if (a_iter->data <= e_iter->data){
-            sorted_list->next =
+            sort->next = a_iter;
+        } else{
+            sort->next = e_iter;
         }
 
     }
+*/
 
 
     display(&sorted_list);
