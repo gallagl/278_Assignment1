@@ -1,5 +1,5 @@
-C:/Users/Liam/Desktop/278_Projects/278_Assignment1/cmake-build-debug/CMakeFiles/Q1.dir
-C:/Users/Liam/Desktop/278_Projects/278_Assignment1/cmake-build-debug/CMakeFiles/Q2.dir
-C:/Users/Liam/Desktop/278_Projects/278_Assignment1/cmake-build-debug/CMakeFiles/Q3.dir
-C:/Users/Liam/Desktop/278_Projects/278_Assignment1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Liam/Desktop/278_Projects/278_Assignment1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/galla/Desktop/278_Assignment1/cmake-build-debug/CMakeFiles/Q1.dir
+C:/Users/galla/Desktop/278_Assignment1/cmake-build-debug/CMakeFiles/Q2.dir
+C:/Users/galla/Desktop/278_Assignment1/cmake-build-debug/CMakeFiles/Q3.dir
+C:/Users/galla/Desktop/278_Assignment1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/galla/Desktop/278_Assignment1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

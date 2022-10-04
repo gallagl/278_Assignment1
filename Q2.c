@@ -20,14 +20,14 @@ void push (char n)
     p->data = n;
     p->next = head;
     head = p;
-    printf("+%c\n",n);
+    //printf("+%c\n",n);
 }
 
 char pop(void)
 {
     node *p = head;
     char rslt = p->data;
-    printf("-%c\n",p->data);
+    //printf("-%c\n",p->data);
     head = p->next;
     free (p); //discard node
 
@@ -39,9 +39,6 @@ char *tos (void)
 {
     return &(head->data);
 }
-
-
-
 
 void check_top_and_prev(void) {
 
@@ -58,21 +55,24 @@ void check_top_and_prev(void) {
 
 int main(){
 
-    char s[20] = "[][]{}[";
+    char s[20] = "[][]{}[]{";
+    unsigned long long n =  strlen(s);
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < n; i++) {
         push(s[i]);
         if (head->next != NULL) {
             check_top_and_prev();
         }
     }
+
+
 // figure out how to check if the stack is empty at this stage. figure out where head ends up, why it's not working
 
-/*    if (head == NULL){
-        printf("The string is balanced");
+   if (head == NULL){
+        printf("1");
     } else{
-        printf("The string is not balanced");
-    }*/
+        printf("0");
+    }
 
 
 
