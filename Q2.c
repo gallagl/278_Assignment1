@@ -12,32 +12,31 @@ typedef struct node {
     char data;
 } node;
 
-node *head = NULL;
+node *front = NULL;
 
 void push (char n)
 {
     node *p = malloc(sizeof(node));
     p->data = n;
-    p->next = head;
-    head = p;
+    p->next = front;
+    front = p;
     //printf("+%c\n",n);
 }
 
 char pop(void)
 {
-    node *p = head;
+    node *p = front;
     char rslt = p->data;
     //printf("-%c\n",p->data);
-    head = p->next;
+    front = p->next;
     free (p); //discard node
 
     return rslt;
-
 }
 
 char *tos (void)
 {
-    return &(head->data);
+    return &(front->data);
 }
 
 void check_top_and_prev(void) {
@@ -60,15 +59,15 @@ int main(){
 
     for (int i = 0; i < n; i++) {
         push(s[i]);
-        if (head->next != NULL) {
+        if (front->next != NULL) {
             check_top_and_prev();
         }
     }
 
 
-// figure out how to check if the stack is empty at this stage. figure out where head ends up, why it's not working
+// figure out how to check if the stack is empty at this stage. figure out where front ends up, why it's not working
 
-   if (head == NULL){
+   if (front == NULL){
         printf("1");
     } else{
         printf("0");

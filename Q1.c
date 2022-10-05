@@ -15,7 +15,7 @@ typedef struct{
     node *tail;
 } linked_list;
 
-// Creating head and tail pointers for lists a-e
+// Creating front and tail pointers for lists a-e
 
 node *newNode(int d){
 
@@ -167,14 +167,14 @@ void merge(){
 
     node *sort = sorted_list.head;
 
-    // Set head of output
+    // Set front of output
 /*
     if (a_iter->data <= e_iter->data){
-        sorted_list.head = a_iter;
+        sorted_list.front = a_iter;
 
         a_iter = a_iter->next;
     } else{
-        sorted_list.head = e_iter;
+        sorted_list.front = e_iter;
         e_iter = e_iter->next;
     }
     // Loop through to both to sort
