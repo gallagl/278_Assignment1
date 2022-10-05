@@ -11,12 +11,17 @@ typedef struct{
     node *tail;
 } queue;
 
-node *shead;
+typedef struct{
+    node *head;
+    node *tail;
+} stack;
 
 int counter = 0;
 
 queue q = {NULL,NULL};
 queue output = {NULL,NULL};
+
+stack s = {NULL,NULL};
 
 node* newNode(int d){
     node *pnode;
@@ -40,20 +45,20 @@ void deque(queue *qu){ // Delete first node
     }
 }
 
-void push (int n)
+void push (int n,stack *stk)
 {
     node *p = malloc(sizeof(node));
     p->data = n;
-    p->next = shead;
-    shead = p;
+    p->next = stk->head;
+    stk->head = p;
 }
 
-int pop()
+int pop(stack *stk)
 {
-    node *p = shead;
+    node *p = stk->head;
     int rslt = p->data;
 
-    shead = p->next;
+    stk->head = p->next;
     free (p); //discard node
 
     return rslt;
@@ -96,13 +101,12 @@ void swap_first_k(int k,int input[]){
 
     // Push the k values to be reversed into a stack
     for (int i = 0;i < k;i++){
-        push(input[i]);
+        push(input[i],&s);
         deque(&q);
     }
 
-    //
     for (int i = 0;i < k;i++){
-        enque(pop(),&output);
+        enque(pop(&s),&output);
     }
 
     while (q.head != NULL){
@@ -114,7 +118,7 @@ void swap_first_k(int k,int input[]){
 int main() {
 
     int input[1000];
-    int n = 01;
+    int n = 0;
     int k;
 
 
@@ -152,6 +156,4 @@ int main() {
     printf("Output: ");
     print_queue(&output);
     printf("\n");
-
-
 }
