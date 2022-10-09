@@ -1,3 +1,5 @@
+// Q3.c – Assignment 1 – Liam Gallagher
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -33,7 +35,6 @@ node* newNode(int d){
 
 void deque(queue *qu){ // Delete first node
 
-
     if (qu->head == NULL){
         printf("The queue is empty\n");
         return;
@@ -45,6 +46,7 @@ void deque(queue *qu){ // Delete first node
     }
 }
 
+// Push function
 void push (int n,stack *stk)
 {
     node *p = malloc(sizeof(node));
@@ -52,7 +54,7 @@ void push (int n,stack *stk)
     p->next = stk->head;
     stk->head = p;
 }
-
+// Pop function
 int pop(stack *stk)
 {
     node *p = stk->head;
@@ -63,8 +65,7 @@ int pop(stack *stk)
 
     return rslt;
 }
-
-
+// Enqueue function
 void enque(int d,queue *qu){ // Insert at end
 
     node *pn = newNode(d);
@@ -83,6 +84,7 @@ void enque(int d,queue *qu){ // Insert at end
 
 }
 
+// Print queue function
 void print_queue(queue *qu){
 
     if(qu->head == NULL){
@@ -97,6 +99,7 @@ void print_queue(queue *qu){
     }
 }
 
+// Swap function
 void swap_first_k(int k,int input[]){
 
     // Push the k values to be reversed into a stack
@@ -121,7 +124,7 @@ int main() {
     int n = 0;
     int k;
 
-
+    // Output
     printf("Enter the values in the queue\n");
 
     while (1) {

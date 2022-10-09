@@ -1,4 +1,4 @@
-// Need to create a stack
+// Q2.c – Assignment 1 – Liam Gallagher
 
 // Given input: {[{}{}]} this is considered balanced and therefore a 1 should be returned.
 // Given: {(}), this is not balanced
@@ -14,6 +14,7 @@ typedef struct node {
 
 node *front = NULL;
 
+// Push function
 void push (char n)
 {
     node *p = malloc(sizeof(node));
@@ -23,6 +24,7 @@ void push (char n)
     //printf("+%c\n",n);
 }
 
+// Pop function
 char pop(void)
 {
     node *p = front;
@@ -34,11 +36,13 @@ char pop(void)
     return rslt;
 }
 
+// tos function
 char *tos (void)
 {
     return &(front->data);
 }
 
+// Casts values to int. I found that the integer differences in [], {}, and () are either 1 or 2. Using this the problem can be solved.
 void check_top_and_prev(void) {
 
     char t = pop();
@@ -51,11 +55,8 @@ void check_top_and_prev(void) {
         push(t);
     }
 }
-
-int main(){
-
-    char s[20] = "[][]{}[]{";
-    unsigned long long n =  strlen(s);
+// Reads in values from an array, uses check top and prev function, and if balanced prints 1, else 0.
+void solve(char s[], unsigned long long n){
 
     for (int i = 0; i < n; i++) {
         push(s[i]);
@@ -64,22 +65,46 @@ int main(){
         }
     }
 
+    printf("Input: %s\n",s);
+    printf("Output: ");
 
-// figure out how to check if the stack is empty at this stage. figure out where front ends up, why it's not working
-
-   if (front == NULL){
+    if (front == NULL){
         printf("1");
     } else{
         printf("0");
     }
 
+}
 
+int main(){
 
+    // Test cases
+    char s[20] = "{[{}{}]}[()]";
+    unsigned long long n =  strlen(s);
 
+    char s1[20] = "{{}{}}";
+    unsigned long long n1 =  strlen(s1);
 
+    char s2[20] = "[]{}()";
+    unsigned long long n2 =  strlen(s2);
 
+    char s3[20] = "{()}[)";
+    unsigned long long n3 =  strlen(s3);
 
+    char s4[20] = "{(})";
+    unsigned long long n4 =  strlen(s4);
 
+    // Output
+    printf("Test 1:\n");
+    solve(s,n);
+    printf("\nTest 2:\n");
+    solve(s1,n1);
+    printf("\nTest 3:\n");
+    solve(s2,n2);
+    printf("\nTest 4:\n");
+    solve(s3,n3);
+    printf("\nTest 5:\n");
+    solve(s4,n4);
 }
 
 

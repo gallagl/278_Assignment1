@@ -1,10 +1,11 @@
+// Q1.c – Assignment 1 – Liam Gallagher
+
 #include <stdlib.h>
 #include <stdio.h>
 
 // node structure definition with typedef shortcut
 
-typedef struct node
-{
+typedef struct node{
     int data;
     struct node *next;
     struct node *prev;
@@ -28,6 +29,7 @@ node *newNode(int d){
     return pnode;
 }
 
+// Prepend function
 void prepend(linked_list *ll, int d){
 
     node *pnode = newNode(d);
@@ -43,6 +45,7 @@ void prepend(linked_list *ll, int d){
     }
 }
 
+// Append function
 void append(linked_list *ll, int d){
 
     node *pnode = newNode(d);
@@ -57,6 +60,7 @@ void append(linked_list *ll, int d){
     }
 }
 
+// Pop/deque function
 void deleteFromFront(linked_list *ll){
 
     node *temp = ll->head;
@@ -71,6 +75,7 @@ void deleteFromFront(linked_list *ll){
     }
 }
 
+// Insert function
 void insert(linked_list *ll, int d, int pos) {
 
     node *pnode = newNode(d);
@@ -92,7 +97,6 @@ void insert(linked_list *ll, int d, int pos) {
     pnode->prev = iter;
     pnode->next->prev = pnode;
     iter->next = pnode;
-
 }
 
 // Global linked list variables
@@ -100,6 +104,7 @@ linked_list a;
 linked_list e;
 linked_list sorted_list;
 
+// Display funciton
 void display(linked_list *ll){
 
     node *iter = ll->head;
@@ -142,7 +147,6 @@ void deletefirst(){
 void insertpos(){
 
     insert(&a,30,2); // Insert uses 0-based indexing
-
     display(&a);
 }
 
@@ -160,42 +164,70 @@ void merge(){
     // Creating list e
     append(&e, 24);
     append(&e, 25);
-    append(&e, 26);
+    append(&e, 36);
 
-    node *a_iter = a.head;
-    node *e_iter = e.head;
+    node *dptr = a.head;
+    node *eptr = e.head;
+    node *sorted_head = NULL;
+    node *sorted_tail = NULL;
 
-    node *sort = sorted_list.head;
-
-    // Set front of output
-/*
-    if (a_iter->data <= e_iter->data){
-        sorted_list.front = a_iter;
-
-        a_iter = a_iter->next;
-    } else{
-        sorted_list.front = e_iter;
-        e_iter = e_iter->next;
+    // Set head of the merged list
+    if (dptr->data <= eptr->data){
+        sorted_list.head = dptr;
+        sorted_list.tail = dptr;
+        dptr = dptr->next;
+    }else{
+        sorted_list.head = eptr;
+        sorted_list.tail = eptr;
+        eptr = eptr->next;
     }
-    // Loop through to both to sort
-    while ((a_iter != NULL) && (e_iter != NULL)){
-        if (a_iter->data <= e_iter->data){
-            sort->next = a_iter;
-        } else{
-            sort->next = e_iter;
+
+    while (1) {
+
+        // Checking case where one list has been fully traversed (meaning all larger values exist in the other list).
+
+        if (dptr == NULL){
+            while (eptr != NULL){
+                sorted_list.tail->next = eptr;
+                eptr->prev = sorted_list.tail;
+                sorted_list.tail = eptr;
+                eptr = eptr->next;
+            }
+            display(&sorted_list);
+            return;
+        }
+        if (eptr == NULL){
+
+            while (dptr != NULL){
+
+                sorted_list.tail->next = dptr;
+                dptr->prev = sorted_list.tail;
+                sorted_list.tail = dptr;
+                dptr = dptr->next;
+            }
+
+            display(&sorted_list);
+            return;
         }
 
+        // General merging case
+        if (dptr->data <= eptr->data) {
+            sorted_list.tail->next = dptr;
+            dptr->prev = sorted_list.tail;
+            sorted_list.tail = dptr;
+            dptr = dptr->next;
+        } else {
+            sorted_list.tail->next = eptr;
+            eptr->prev = sorted_list.tail;
+            sorted_list.tail = eptr;
+            eptr = eptr->next;
+        }
     }
-*/
-
-
-    display(&sorted_list);
-
-
 }
 
 int main(){
 
+    // Output
     printf("\nStart of A:\n");
     create(); // 1. a) output
     printf("End of A:\n\n");
